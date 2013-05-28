@@ -1,0 +1,16 @@
+{
+  "name": "symphony-2-scaffold",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "dependencies": {
+    "optimist": "0.3.5",
+    "underscore": "1.4.3"
+  }
+}
