@@ -65,19 +65,19 @@ doIt = function () {
 	executeQueue('find '+ full_dir +' -name .gitmodules -exec rm -f {} ;');
 	
 	executeQueue('git clone ' + argv['template-repro'] + ' ' + full_dir + '/template');
-	executeQueue('mv ' + full_dir + '/template/workspace ' + full_dir + '/workspace');
+	executeQueue('mv -f ' + full_dir + '/template/workspace ' + full_dir + '/workspace');
 	executeQueue('rm -rf ' + full_dir + '/template');
 	
 	if (argv.fx) {
 		executeQueue('git clone ' + argv['fx-repro'] + ' ' + full_dir + '/fx');
-		executeQueue('mv ' + full_dir + '/fx/dist ' + full_dir + '/workspace/assets/js/fx');
+		executeQueue('mv -f ' + full_dir + '/fx/dist ' + full_dir + '/workspace/assets/js/fx');
 		executeQueue('rm -rf ' + full_dir + '/fx');
 	}
 };
 
 console.log('Welcome in Symphony 2 scaffold');
 console.log();
-console.log('Creating project "%s" structure', argv.name);
+console.log('Creating project "%s"', argv.name);
 
 if (fs.existsSync(full_dir)) {
 	if (!argv.d) {
@@ -93,9 +93,3 @@ if (fs.existsSync(full_dir)) {
 	fs.mkdirSync(full_dir);
 	doIt();
 }
-
-(function timeout() {
-	if (!!cmds.length || cmdRunning) {
-		setTimeout(timeout, 100);
-	}
-})();
